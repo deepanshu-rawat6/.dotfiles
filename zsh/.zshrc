@@ -72,19 +72,28 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    dnf
-    aws
-    battery
     docker
+    aws
+    brew
     docker-compose
     eza
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    you-should-use
-    zsh-bat
-    poetry
-    thefuck
+    fzf
+    kind
+    kubectl
+    minikube
+    tldr
+    nvm
+    python
+    ssh
+    terraform
+    zoxide
+    python
+    golang
+    helm
+    mvn
 )
+
+eval "$(zoxide init zsh)"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -116,37 +125,26 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+export PATH=<path>
 
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-eval "$(zoxide init zsh)"
-eval $(thefuck --alias FUCK)
-
-. "/home/spectre/.deno/env"
-[[ -s "/home/spectre/.gvm/scripts/gvm" ]] && source "/home/spectre/.gvm/scripts/gvm"
-export GOPATH=$HOME/go
-PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
-# pnpm
-export PNPM_HOME="/home/spectre/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# Created by `pipx` on 2024-11-05 13:45:48
-export PATH="$PATH:/home/spectre/.local/bin"
-eval "$(register-python-argcomplete pipx)"
-
-source <(fzf --zsh)
-
-function cursor {
-        /opt/cursor.appimage $@
-}
-
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 echo ""
-figlet -f slant Sehnsucht
+figlet -f slant Sehnx
 echo ""
+export NVM_DIR="/opt/homebrew/opt/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/deepanshurawat/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
+
+M2_HOME='/opt/apache-maven'
+export PATH="$M2_HOME/bin:$PATH"
+
+# Created by `pipx` on 2025-03-31 08:57:32
+export PATH="$PATH:/Users/deepanshurawat/.local/bin"
